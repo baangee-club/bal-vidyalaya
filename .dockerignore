@@ -1,0 +1,7 @@
+.env
+*.env
+openapi.json
+openapitools.json
+.coverage
+.py[co]
+.venv/

@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "balvid"
+version = "0.1.0"
+description = ""
+authors = ["Zeeshan Khan <zkhan1093@gmail.com>"]
+readme = "README.md"
+packages = [{include = "balvid"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.86.0"
+pymongo = "^4.3.2"
+python-dotenv = "^0.21.0"
+python-dateutil = "^2.8.2"
+uvicorn = "^0.19.0"
+python-multipart = "^0.0.5"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+requests = "^2.28.1"
+pytest-cov = "^4.0.0"
+black = "^22.10.0"
+mongomock = "^4.1.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

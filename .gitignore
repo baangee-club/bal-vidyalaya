@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache
+openapi.json
+openapitools.json
+.coverage
+*.env
+*.py[co]
+poetry.toml
+.venv/
+docker-compose.override.yml
