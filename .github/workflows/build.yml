@@ -1,7 +1,7 @@
 name: Deploy On Production
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -14,7 +14,7 @@ jobs:
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@v1
       env:
-        RELEASE_BRANCHES: master
+        RELEASE_BRANCHES: main
   deploy:
     needs: tag
     runs-on: ubuntu-latest

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Request, Response
 from fastapi.routing import APIRoute
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
@@ -40,9 +40,24 @@ def create_app(config: Settings) -> FastAPI:
     def shutdown_db_client():
         app.mongodb_client.close()
 
+    @app.middleware('http')
+    async def log_response(request: Request, call_next):
+        response = await call_next(request)
+        
+        res_body = b''
+        async for chunk in response.body_iterator:
+            res_body += chunk
+        print(res_body.decode())
+        return Response(content=res_body, status_code=response.status_code, 
+        headers=dict(response.headers), media_type=response.media_type)
+
+    async def log_json(request: Request):
+        print(await request.json())
+
     app.include_router(
         bill_app,
         tags=["Bills"],
         prefix="/bills",
+        dependencies=[Depends(log_json)]
     )
     return app
