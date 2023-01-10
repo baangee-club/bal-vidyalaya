@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bangee Bal Vidyalaya</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <style>
+      .selector-for-some-widget {
+        box-sizing: content-box;
+      }
+      @if $font-size-root != null {
+        --#{$prefix}root-font-size: #{$font-size-root};
+      }
+      --#{$prefix}body-font-family: #{inspect($font-family-base)};
+      @include rfs($font-size-base, --#{$prefix}body-font-size);
+      --#{$prefix}body-font-weight: #{$font-weight-base};
+      --#{$prefix}body-line-height: #{$line-height-base};
+      --#{$prefix}body-color: #{$body-color};
+
+      --#{$prefix}emphasis-color: #{$body-emphasis-color};
+      --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
+
+      --#{$prefix}secondary-color: #{$body-secondary-color};
+      --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
+      --#{$prefix}secondary-bg: #{$body-secondary-bg};
+      --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
+
+      --#{$prefix}tertiary-color: #{$body-tertiary-color};
+      --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
+      --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
+      --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
+
+      @if $body-text-align != null {
+        --#{$prefix}body-text-align: #{$body-text-align};
+      }
+      --#{$prefix}body-bg: #{$body-bg};
+      --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+      body {
+        margin: 0; // 1
+        font-family: var(--#{$prefix}body-font-family);
+        @include font-size(var(--#{$prefix}body-font-size));
+        font-weight: var(--#{$prefix}body-font-weight);
+        line-height: var(--#{$prefix}body-line-height);
+        color: var(--#{$prefix}body-color);
+        text-align: var(--#{$prefix}body-text-align);
+        background-color: var(--#{$prefix}body-bg); // 2
+        -webkit-text-size-adjust: 100%; // 3
+        -webkit-tap-highlight-color: rgba($black, 0); // 4
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bangee Bal Vidyalaya</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Admission</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="h-100 p-5 text-bg-dark">
+      <h2>Bangee Bal Vidyalaya</h2>
+
+      <img
+        src="https://via.placeholder.com/300x250?text=300x250+MPU"
+        class="img-fluid align-right"
+        alt="..."
+      />
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
