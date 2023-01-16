@@ -38,6 +38,8 @@ jobs:
           context: frontend
           push: true
           platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: |
             ghcr.io/${{github.repository}}-web:${{ steps.date.outputs.version }}
             ghcr.io/${{github.repository}}-web:latest
@@ -72,6 +74,8 @@ jobs:
           context: backend
           push: true
           platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: |
             ghcr.io/${{github.repository}}-backend:${{ steps.date.outputs.version }}
             ghcr.io/${{github.repository}}-backend:latest
