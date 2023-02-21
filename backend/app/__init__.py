@@ -47,7 +47,7 @@ def create_app(config: Settings) -> FastAPI:
         res_body = b""
         async for chunk in response.body_iterator:
             res_body += chunk
-        print(res_body.decode())
+        logger.debug(res_body.decode())
         return Response(
             content=res_body,
             status_code=response.status_code,
@@ -56,7 +56,7 @@ def create_app(config: Settings) -> FastAPI:
         )
 
     async def log_json(request: Request):
-        print(await request.json())
+        logging.debug(await request.json())
 
     app.include_router(
         bill_app, tags=["Bills"], prefix="/bills", dependencies=[Depends(log_json)]

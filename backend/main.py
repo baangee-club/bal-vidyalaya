@@ -7,13 +7,16 @@ from app.config import get_settings
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)
 
 # get root logger
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("app")
+logger.debug("created settings")
+
+setting = get_settings()
+print(f"setting log level to {setting.log_level.upper()}")
+logger.setLevel(setting.log_level.upper())
+
 logger.info("info")
 logger.debug("debug")
 logger.error("error")
-
-setting = get_settings()
-logger.debug("created settings")
 
 logger.debug("creating app")
 app = create_app(setting)

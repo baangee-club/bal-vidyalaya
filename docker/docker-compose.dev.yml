@@ -1,9 +1,10 @@
 version: "3"
 
 services:
-
   backend:
-    image: ghcr.io/zkhan93/cscbalvid-backend:latest
+    build: 
+      context: ../backend
+      target: dev
     entrypoint:
       [
         "uvicorn",
@@ -15,11 +16,13 @@ services:
         "80"
       ]
     env_file:
-      - backend.env
+      - .env
+    volumes:
+      - ../backend:/code
     restart: always
 
   web:
-    image: ghcr.io/zkhan93/cscbalvid-web:latest
+    build: ../frontend
     restart: always
 
   proxy:
@@ -27,8 +30,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
-      - 8066:80
+      - 8080:80
     depends_on:
       - web
       - backend
-    restart: always

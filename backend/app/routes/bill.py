@@ -96,10 +96,10 @@ async def fetch(
         inserted_id = bill_repo.insert_one(bill)
         bill = bill_repo.get(inserted_id)
 
-    print(bill)
-    print(bill.billerBillID)
+    logger.debug(bill)
+    logger.debug(bill.billerBillID)
     receipt = receipt_repo.find_one({"billerBillID": bill.billerBillID})
-    print(receipt)
+    logger.debug(receipt)
     if receipt:
         bill = None
 
@@ -136,7 +136,7 @@ async def fetch_receipt(
         receipt_repo.insert_one(receipt_dict)
         _receipt = receipt_repo.find_one({"billerBillID": receipt.billerBillID})
 
-    print(_receipt)
+    logger.debug(_receipt)
 
     receipt = {
         "date": _receipt.date,

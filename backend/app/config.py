@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     secret_key: str
     username: bytes
     password: bytes
+    log_level: str
 
 
 @lru_cache()
