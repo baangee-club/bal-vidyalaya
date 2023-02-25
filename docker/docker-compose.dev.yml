@@ -24,7 +24,8 @@ services:
   web:
     build: ../frontend
     restart: always
-
+    volumes:
+      - ../frontend/public:/usr/share/nginx/html/
   proxy:
     image: nginxinc/nginx-unprivileged:latest
     volumes:
