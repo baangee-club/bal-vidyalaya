@@ -24,17 +24,19 @@ bill = APIRouter(prefix="", dependencies=[Depends(check_auth)])
 
 
 def get_month_ends(date):
-    startOfCurrentMonth = datetime.datetime(
-        date.year, date.month, 1, hour=0, minute=0, second=0
-    )
-    this_or_next_year = date.year if date.month < 12 else date.year + 1
-    next_month = (date.month + 1) % 12
-    endOfCurrentMonth = datetime.datetime(
-        this_or_next_year, next_month, 1, hour=23, minute=59, second=59
-    )
-    endOfCurrentMonth = endOfCurrentMonth - datetime.timedelta(days=1)
-    return startOfCurrentMonth, endOfCurrentMonth
+    if date.month == 12:
+        this_year = date.year
+        next_year = date.year + 1
+        next_month = 1
+    else:
+        this_year = date.year
+        next_year = date.year
+        next_month = date.month + 1
 
+    start_of_current_month = datetime.datetime(this_year, date.month, 1, hour=0, minute=0, second=0)
+    end_of_current_month = datetime.datetime(next_year, next_month, 1, hour=0, minute=0, second=0) - datetime.timedelta(seconds=1)
+
+    return start_of_current_month, end_of_current_month
 
 @bill.post(
     "/fetch",
